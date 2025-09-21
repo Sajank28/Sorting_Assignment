@@ -1,0 +1,28 @@
+//LeetCode - 977
+1. Squares of a Sorted Array
+Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        //Selection sort
+        int size = nums.length;
+
+        for(int i=0;i<size;i++){
+            nums[i] = nums[i] * nums[i];
+        }
+
+        for(int i=0;i<size-1;i++){
+            int minIndex=i;
+            for(int j=i+1;j<size;j++){
+                if(nums[j]<nums[minIndex]){
+                    minIndex = j;
+                }
+            }
+
+            int temp = nums[minIndex];
+            nums[minIndex]=nums[i];
+            nums[i]=temp;
+        }
+        return nums;
+    }
+}
